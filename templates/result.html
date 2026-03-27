@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fire Detection Result</title>
+    <style>
+        :root {
+            --primary-color: #4CAF50;
+            --background-color: #1a1a1a;
+            --text-color: #f0f0f0;
+            --navbar-color: #2c2c2c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .navbar {
+            background-color: var(--navbar-color);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar ul {
+            display: flex;
+            justify-content: center;
+            list-style-type: none;
+        }
+
+        .navbar li {
+            margin: 0 1rem;
+        }
+
+        .navbar a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .navbar a:hover {
+            color: var(--primary-color);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2, h3 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        h2 {
+            font-size: 2rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+        }
+
+        .upload-section, .about-section, .how-it-works-section {
+            margin-bottom: 2rem;
+        }
+
+        .file-input-wrapper {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+        }
+
+        .file-input-wrapper input[type=file] {
+            font-size: 100px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
+
+        #file-name {
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-top: 1rem;
+        }
+
+        .result-section {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .result {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: var(--navbar-color);
+            margin-top: 2rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .feature-item {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 1rem;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .feature-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .marquee {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 0;
+            overflow: hidden;
+        }
+
+        .marquee-content {
+            display: inline-block;
+            white-space: nowrap;
+            animation: marquee 20s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .how-it-works-content {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 1rem;
+            border-radius: 5px;
+            margin-top: 1rem;
+        }
+
+        .how-it-works-content ul {
+            list-style-type: none;
+            padding-left: 1rem;
+        }
+
+        .how-it-works-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .how-it-works-content li::before {
+            content: "•";
+            color: var(--primary-color);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="marquee">
+        <div class="marquee-content">
+            In case of emergency, call Fire Brigade: 101 (or your local emergency number) | Stay safe, act fast!
+        </div>
+    </div>
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container" id="home">
+    <h1>{{ result }}</h1>
+    <a href="{{ url_for('home') }}">Back to Home</a>
+</body>
+</html>
